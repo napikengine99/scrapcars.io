@@ -4,7 +4,12 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const ws = new WebSocket("ws://localhost:3000");
+const SERVER_URL =
+  location.hostname === "localhost"
+    ? "ws://localhost:3000"
+    : "wss://scrapcars-io.onrender.com";
+
+const ws = new WebSocket(SERVER_URL);
 
 let myId = null;
 let players = {};
